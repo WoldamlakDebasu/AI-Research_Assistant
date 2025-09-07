@@ -10,6 +10,7 @@ import { Search, Brain, FileText, Loader2, CheckCircle, AlertCircle, Download } 
 import io from 'socket.io-client'
 import jsPDF from 'jspdf'
 import { marked } from "marked";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 import html2canvas from 'html2canvas'
 import './App.css'
 
@@ -58,7 +59,7 @@ function App() {
   }, [thoughts])
 
   const connectSocket = (taskId) => {
-    socketRef.current = io('http://localhost:5000')
+    socketRef.current = io(BACKEND_URL);
     
     socketRef.current.on('connect', () => {
       console.log('Connected to server')
@@ -116,7 +117,7 @@ function App() {
     setError('')
 
     try {
-      const response = await fetch('http://localhost:5000/api/research', {
+  const response = await fetch(`${BACKEND_URL}/api/research`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
