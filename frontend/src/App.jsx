@@ -11,7 +11,6 @@ import { Search, Brain, FileText, Loader2, CheckCircle, AlertCircle, Download } 
 import io from 'socket.io-client'
 import jsPDF from 'jspdf'
 import { marked } from "marked";
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 import html2canvas from 'html2canvas'
 import './App.css'
 
